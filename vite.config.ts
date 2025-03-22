@@ -42,7 +42,7 @@ export default defineConfig({
         host: true,
     },
     preview: {
-        port: 7000,
+        port: 22006,
         host:true  // 允许外部访问
     },
 })

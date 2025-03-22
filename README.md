@@ -42,7 +42,7 @@ This project is a simple text-based calculator application built with React, Typ
     pnpm dev
     ```
 
-    This will start the development server, typically on `http://localhost:5173`.  Open this URL in your browser to see the application.
+    This will start the development server, typically on `http://localhost:3000`.  Open this URL in your browser to see the application.
 
 ## Usage
 
@@ -77,16 +77,23 @@ This project is licensed under the [MIT License](LICENSE) (You'll need to create
 
 # 基于文本的计算器（带方程求解）
 
-本项目是一个简单的基于文本的计算器应用程序，使用 React、TypeScript、Vite、pnpm、Tailwind CSS 和 Shadcn UI 构建。它允许用户通过在文本区域中输入表达式来执行计算和求解线性方程。
+基于文本的计算器应用，一个静态前端项目
+
+允许用户通过在文本区域中输入表达式来求计算结果，支持一元一次方程。
+
+项目使用 React、TypeScript、Vite、pnpm、Tailwind CSS 和 Shadcn UI 构建。
+
+支持pwa离线安装到不同的OS
+
 
 ## 功能特性
 
 *   **基础算术：** 执行加法、减法、乘法、除法和其他标准数学运算。
 *   **方程求解：** 求解具有单个变量 'x' 的线性方程。
 *   **注释支持：** 允许用户使用 `#` 符号向其计算添加注释。 `#` 后面的部分将被视为注释，并在计算过程中被忽略。
-*   **错误处理：** 如果输入无效或方程无法求解，则提供信息丰富的错误消息。
 *   **响应式设计：** 使用两列布局适应不同的屏幕尺寸。
 *   **格式化输出：** 以用户友好的方式显示数字。格式化输出， 如果值太小，就显示百分比。
+*   **PWA支持** 使用Https部署后可以通过PWA安装到本地应用
 
 ## 技术栈
 
@@ -119,26 +126,17 @@ This project is licensed under the [MIT License](LICENSE) (You'll need to create
     pnpm dev
     ```
 
-    这将启动开发服务器，通常在 `http://localhost:5173` 上。在浏览器中打开此 URL 以查看应用程序。
+    这将启动开发服务器，通常在 `http://localhost:3000` 上。在浏览器中打开此 URL 以查看应用程序。
 
-## 使用方法
 
-1.  **输入计算：** 在左侧文本区域中键入数学表达式。每行都被视为一个单独的计算。
-2.  **添加注释：** 使用 `#` 符号向您的计算添加注释。例如：`2 * 3 + 4 # 这是一个注释`。
-3.  **求解方程：** 输入以 'x' 作为变量的线性方程。例如：`2x + 5 = 11`。
-4.  **查看结果：** 结果将显示在右侧的文本区域中。如果发生错误，将显示错误消息。
 ## 例子
-
-3+29
-5/2
-2*(3+5) # calculate first
-x+2=5
-3x - 1 = 2x + 4 # Solve for x
 
 
 ## 贡献
 
-欢迎贡献！如果您发现任何错误或有改进建议，请提交一个 issue 或 pull request。
+欢迎Fork/ Star
+
+如果您发现任何错误或有改进建议，请提交一个 issue 或 pull request。
 
 ## 许可证
 

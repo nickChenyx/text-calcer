@@ -55,23 +55,25 @@ export function TextCalcApp() {
     );
 }
 
-function formatEvalResultNumber(evalResult: number): string {
+function formatEvalResultNumber(evalResult: number, needPercent: boolean): string {
     if (Number.isInteger(evalResult)) return evalResult.toString();
 
     const formatted = format(evalResult, { notation: 'fixed', precision: 4 });
     let res = parseFloat(formatted).toString();
 
-    if (evalResult < 3) {
-        const temp = format(evalResult * 100, { notation: 'fixed', precision: 2 })
-        const percent = parseFloat(temp).toString() + "%";
+    // 太大的值没有必要显示百分比
+    if (needPercent && evalResult< 3) {
+        const temp = format(evalResult * 100 - 100, { notation: 'fixed', precision: 2 })
+        const fix = evalResult > 0 ? "+":""
+        const percent = fix + parseFloat(temp).toString() + "%";
         res = `${res}(${percent})`;
     }
     return res
 }
 
-function formatEvalResult(evalResult: MathType): string {
+function formatEvalResult(evalResult: MathType, needPercent: boolean): string {
     if (typeof evalResult === 'number') {
-        return formatEvalResultNumber(evalResult)
+        return formatEvalResultNumber(evalResult, needPercent)
     } else if (typeof evalResult === 'string') {
         return evalResult;
     } else if (evalResult && typeof evalResult === 'object' && 'type' in evalResult) {
@@ -120,8 +122,9 @@ function GetLineNoCommentResult(inpLine: string) {
     }
 
     try {
+        const needPercent = inpLine.includes('/') ? true : false
         const evalResult = evaluate(inpLine);
-        const formattedResult = formatEvalResult(evalResult);
+        const formattedResult = formatEvalResult(evalResult, needPercent);
         result = `${inpLine} = ${formattedResult}`;
     } catch (error: any) {
         console.log(`error: `, error)
