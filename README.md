@@ -18,9 +18,10 @@ The project is built using React, TypeScript, Vite, pnpm, Tailwind CSS, and Shad
 
 ### Example
 
+A demo page deployed using Cloudflare Pages -> [Cloudflare Demo URL](https://text-calcer.pages.dev/)
+
 ![desc](images/demo-en.png)
 
-A demo page deployed using Cloudflare Pages -> [Cloudflare Demo URL](https://text-calcer.pages.dev/)
 
 ### Features
 
@@ -98,22 +99,18 @@ This project is licensed under the [GPL3 License](LICENSE).
 
 ### 例子
 
-![desc](images/demo-cn.png)
-
 使用Cloudflare Pages部署的一个示例页面 -> [Cloudflare Demo URL](https://text-calcer.pages.dev/)
 
-
-
+![desc](images/demo-cn.png)
 
 ### 功能特性
 
 *   **基础算术：** 执行加法、减法、乘法、除法和其他标准数学运算。
 *   **方程求解：** 求解具有单个变量 'x' 的线性方程。
 *   **注释支持：** 允许用户使用 `#` 符号向其计算添加注释。 `#` 后面的部分将被视为注释，并在计算过程中被忽略。
-*   **响应式设计：** 使用两列布局适应不同的屏幕尺寸。
-*   **格式化输出：** 以用户友好的方式显示数字。格式化输出， 如果值太小，就显示百分比。
-*   **PWA支持** 使用Https部署后可以通过PWA安装到本地应用
-*   **云服务商pages部署** 支持各种服务商的pages静态部署
+*   **格式化输出：** 以用户友好的方式显示数字。格式化输出， 除法值显示百分比。
+*   **PWA支持：** 使用Https部署后可以通过PWA安装到本地应用
+*   **云服务商pages部署：** 支持各种服务商的pages静态部署
 
 
 ### 技术栈
