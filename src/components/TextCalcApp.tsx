@@ -64,7 +64,7 @@ function formatEvalResultNumber(evalResult: number, needPercent: boolean): strin
     // 太大的值没有必要显示百分比
     if (needPercent && evalResult< 3) {
         const temp = format(evalResult * 100 - 100, { notation: 'fixed', precision: 2 })
-        const fix = evalResult > 0 ? "+":""
+        const fix = evalResult > 1 ? "+":""
         const percent = fix + parseFloat(temp).toString() + "%";
         res = `${res}(${percent})`;
     }

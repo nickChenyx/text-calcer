@@ -48,8 +48,8 @@ A demo page deployed using Cloudflare Pages -> [Cloudflare Demo URL](https://tex
 1.  **Clone the repository:**
 
     ```bash
-    git clone <your repository address>
-    cd <your repository name>
+    git clone https://github.com/Knowckx/text-calcer.git
+    cd text-calcer
     ```
 
 2.  **Install dependencies:**
@@ -128,8 +128,8 @@ This project is licensed under the [GPL3 License](LICENSE).
 1.  **克隆仓库:**
 
     ```bash
-    git clone <你的仓库地址>
-    cd <你的仓库名称>
+    git clone https://github.com/Knowckx/text-calcer.git
+    cd text-calcer
     ```
 
 2.  **安装依赖:**
@@ -158,7 +158,7 @@ This project is licensed under the [GPL3 License](LICENSE).
 
 ### 贡献
 
-欢迎Fork/ Star
+欢迎Fork / Star
 
 如果您发现任何错误或有改进建议，请提交一个 issue 或 pull request。
 
