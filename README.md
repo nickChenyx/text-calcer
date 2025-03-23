@@ -6,7 +6,7 @@
 
 ---
 
-## English
+# English
 
 ### Text-based Calculator (with Equation Solver)
 
@@ -85,7 +85,7 @@ This project is licensed under the [GPL3 License](LICENSE).
 ---
 
 
-## 中文
+# 中文
 欢迎阅读项目文档！
 
 ### 基于文本的计算器（带方程求解）
