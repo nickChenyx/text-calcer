@@ -1,15 +1,35 @@
-# Text-Based Calculator with Equation Solver
 
-This project is a simple text-based calculator application built with React, TypeScript, Vite, pnpm, Tailwind CSS, and Shadcn UI.  It allows users to perform calculations and solve linear equations by entering expressions in a textarea.
+<!-- 语言切换按钮 -->
+<div>
+  <button onclick="showLanguage('en')">English</button>
+  <button onclick="showLanguage('zh')">中文</button>
+</div>
+
+<!-- 英文内容 -->
+<div id="en-content" style="display: block;">
+# Text-based Calculator (with Equation Solver)
+
+A text-based calculator application, a static frontend project.
+
+Allows users to calculate results by entering expressions in a text area, supporting linear equations with one variable.
+
+The project is built using React, TypeScript, Vite, pnpm, Tailwind CSS, and Shadcn UI.
+
+## Example
+
+![desc](images/demo-en.png)
+
+A demo page deployed using Cloudflare Pages -> [Cloudflare Demo URL](https://text-calcer.pages.dev/)
 
 ## Features
 
-*   **Basic Arithmetic:**  Performs addition, subtraction, multiplication, division, and other standard mathematical operations.
+*   **Basic Arithmetic:** Performs addition, subtraction, multiplication, division, and other standard mathematical operations.
 *   **Equation Solving:** Solves linear equations with a single variable 'x'.
-*   **Comment Support:**  Allows users to add comments to their calculations using the `#` symbol.  The part of the line after `#` will be treated as a comment and ignored during calculation.
-*   **Error Handling:**  Provides informative error messages if the input is invalid or the equation cannot be solved.
-*   **Responsive Design:**  Adapts to different screen sizes using a two-column layout.
-*   **Formatted Output** Displays numbers in a user friendly way. Format the output, show percentage if the value is too small.
+*   **Comment Support:** Allows users to add comments to their calculations using the `#` symbol.  The part after `#` will be treated as a comment and ignored during calculation.
+*   **Responsive Design:** Adapts to different screen sizes using a two-column layout.
+*   **Formatted Output:** Displays numbers in a user-friendly way. Formats the output, displaying percentages if the value is too small.
+*   **PWA Support:**  After deployment using Https, it can be installed as a local application through PWA.
+*   **Cloud Provider Pages Deployment:** Supports static deployment on various service providers' pages.
 
 ## Tech Stack
 
@@ -21,13 +41,13 @@ This project is a simple text-based calculator application built with React, Typ
 *   **UI Components:** [Shadcn UI](https://ui.shadcn.com/)
 *   **Math Library:** [Math.js](https://mathjs.org/)
 
-## Getting Started
+## Quick Start
 
 1.  **Clone the repository:**
 
     ```bash
-    git clone <your-repository-url>
-    cd <your-repository-name>
+    git clone <your repository address>
+    cd <your repository name>
     ```
 
 2.  **Install dependencies:**
@@ -42,39 +62,30 @@ This project is a simple text-based calculator application built with React, Typ
     pnpm dev
     ```
 
-    This will start the development server, typically on `http://localhost:3000`.  Open this URL in your browser to see the application.
+    This will start the development server, usually on `http://localhost:3000`. Open this URL in your browser to view the application.
 
-## Usage
+4.  **Local deployment, supporting PWA application installation:**
 
-1.  **Enter calculations:** Type mathematical expressions into the left textarea.  Each line is treated as a separate calculation.
-2.  **Add comments:** Use the `#` symbol to add comments to your calculations.  For example: `2 * 3 + 4 # This is a comment`.
-3.  **Solve equations:** Enter linear equations with 'x' as the variable.  For example: `2x + 5 = 11`.
-4.  **View results:** The results will be displayed in the right textarea.  If an error occurs, an error message will be shown.
-
-## Examples
-
-3+29
-5/2
-2*(3+5) # calculate first
-x+2=5
-3x - 1 = 2x + 4 # Solve for x
-
-
-
+    ```bash
+    pnpm run build
+    pnpm preview --host
+    ```
 
 ## Contributing
 
-Contributions are welcome!  If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
+Fork/Star are welcome.
+
+If you find any bugs or have suggestions for improvement, please submit an issue or pull request.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) (You'll need to create a LICENSE file with the MIT license text).
+This project is licensed under the [MIT License](LICENSE).
 
 ---
+</div>
 
-<details>
-<summary>中文说明 (Chinese Version)</summary>
-
+<!-- 中文内容 -->
+<div id="zh-content" style="display: none;">
 # 基于文本的计算器（带方程求解）
 
 基于文本的计算器应用，一个静态前端项目
@@ -154,6 +165,21 @@ This project is licensed under the [MIT License](LICENSE) (You'll need to create
 
 ## 许可证
 
-本项目根据 [MIT 许可证](LICENSE) 获得许可 (您需要创建一个包含 MIT 许可证文本的 LICENSE 文件)。
+本项目根据 [MIT 许可证](LICENSE) 获得许可
 
-</details>
+
+</div>
+
+<!-- JavaScript 控制语言切换 -->
+<script>
+  function showLanguage(lang) {
+    // 隐藏所有语言内容
+    document.getElementById('en-content').style.display = 'none';
+    document.getElementById('zh-content').style.display = 'none';
+    // 显示选中的语言内容
+    document.getElementById(lang + '-content').style.display = 'block';
+  }
+</script>
+
+
+
