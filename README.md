@@ -83,7 +83,13 @@ This project is licensed under the [MIT License](LICENSE) (You'll need to create
 
 项目使用 React、TypeScript、Vite、pnpm、Tailwind CSS 和 Shadcn UI 构建。
 
-支持pwa离线安装到不同的OS
+## 例子
+
+![desc](images/demo-cn.png)
+
+使用Cloudflare Pages部署的一个示例页面 -> [Cloudflare Demo URL](https://text-calcer.pages.dev/)
+
+
 
 
 ## 功能特性
@@ -94,6 +100,8 @@ This project is licensed under the [MIT License](LICENSE) (You'll need to create
 *   **响应式设计：** 使用两列布局适应不同的屏幕尺寸。
 *   **格式化输出：** 以用户友好的方式显示数字。格式化输出， 如果值太小，就显示百分比。
 *   **PWA支持** 使用Https部署后可以通过PWA安装到本地应用
+*   **云服务商pages部署** 支持各种服务商的pages静态部署
+
 
 ## 技术栈
 
@@ -128,8 +136,14 @@ This project is licensed under the [MIT License](LICENSE) (You'll need to create
 
     这将启动开发服务器，通常在 `http://localhost:3000` 上。在浏览器中打开此 URL 以查看应用程序。
 
+4.  **本地部署，支持安装PWA应用:**
 
-## 例子
+    ```bash
+    pnpm run build
+    pnpm preview --host
+    ```
+
+
 
 
 ## 贡献

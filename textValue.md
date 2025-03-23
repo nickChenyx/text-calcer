@@ -13,3 +13,22 @@ x*6 +2 = 20 - x/2
 股票开盘价格 10.54 目前价格 10.88 涨幅是？ 
 
 10.88/10.54  # 日内涨幅+3.23%
+
+
+
+# EN
+
+1. Text Formula Calculator, supporting inline comments
+
+50*10+2 # This is a comment
+
+10/3+41
+
+2. Solving Linear Equations with One Variable
+
+x*6 +2 = 20 - x/2
+
+3. Display Percentage
+
+Stock opening price 10.54 Current price 10.88 What is the increase?
+10.88/10.54  # Intraday increase +3.23%
