@@ -1,13 +1,14 @@
+## 🌐 Choose your language / 选择语言
 
-<!-- 语言切换按钮 -->
-<div>
-  <button onclick="showLanguage('en')">English</button>
-  <button onclick="showLanguage('zh')">中文</button>
-</div>
+| 🌐 Language | 选择语言 |
+|--------------|----------|
+| [English](#english) | [中文](#中文) |
 
-<!-- 英文内容 -->
-<div id="en-content" style="display: block;">
-# Text-based Calculator (with Equation Solver)
+---
+
+## English
+
+### Text-based Calculator (with Equation Solver)
 
 A text-based calculator application, a static frontend project.
 
@@ -15,13 +16,13 @@ Allows users to calculate results by entering expressions in a text area, suppor
 
 The project is built using React, TypeScript, Vite, pnpm, Tailwind CSS, and Shadcn UI.
 
-## Example
+### Example
 
 ![desc](images/demo-en.png)
 
 A demo page deployed using Cloudflare Pages -> [Cloudflare Demo URL](https://text-calcer.pages.dev/)
 
-## Features
+### Features
 
 *   **Basic Arithmetic:** Performs addition, subtraction, multiplication, division, and other standard mathematical operations.
 *   **Equation Solving:** Solves linear equations with a single variable 'x'.
@@ -31,7 +32,7 @@ A demo page deployed using Cloudflare Pages -> [Cloudflare Demo URL](https://tex
 *   **PWA Support:**  After deployment using Https, it can be installed as a local application through PWA.
 *   **Cloud Provider Pages Deployment:** Supports static deployment on various service providers' pages.
 
-## Tech Stack
+### Tech Stack
 
 *   **Frontend Framework:** [React](https://react.dev/)
 *   **Language:** [TypeScript](https://www.typescriptlang.org/)
@@ -41,7 +42,7 @@ A demo page deployed using Cloudflare Pages -> [Cloudflare Demo URL](https://tex
 *   **UI Components:** [Shadcn UI](https://ui.shadcn.com/)
 *   **Math Library:** [Math.js](https://mathjs.org/)
 
-## Quick Start
+### Quick Start
 
 1.  **Clone the repository:**
 
@@ -71,22 +72,23 @@ A demo page deployed using Cloudflare Pages -> [Cloudflare Demo URL](https://tex
     pnpm preview --host
     ```
 
-## Contributing
+### Contributing
 
 Fork/Star are welcome.
 
 If you find any bugs or have suggestions for improvement, please submit an issue or pull request.
 
-## License
+### License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [GPL3 License](LICENSE).
 
 ---
-</div>
 
-<!-- 中文内容 -->
-<div id="zh-content" style="display: none;">
-# 基于文本的计算器（带方程求解）
+
+## 中文
+欢迎阅读项目文档！
+
+### 基于文本的计算器（带方程求解）
 
 基于文本的计算器应用，一个静态前端项目
 
@@ -94,7 +96,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 项目使用 React、TypeScript、Vite、pnpm、Tailwind CSS 和 Shadcn UI 构建。
 
-## 例子
+### 例子
 
 ![desc](images/demo-cn.png)
 
@@ -103,7 +105,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 
 
-## 功能特性
+### 功能特性
 
 *   **基础算术：** 执行加法、减法、乘法、除法和其他标准数学运算。
 *   **方程求解：** 求解具有单个变量 'x' 的线性方程。
@@ -114,7 +116,7 @@ This project is licensed under the [MIT License](LICENSE).
 *   **云服务商pages部署** 支持各种服务商的pages静态部署
 
 
-## 技术栈
+### 技术栈
 
 *   **前端框架:** [React](https://react.dev/)
 *   **语言:** [TypeScript](https://www.typescriptlang.org/)
@@ -124,7 +126,7 @@ This project is licensed under the [MIT License](LICENSE).
 *   **UI 组件:** [Shadcn UI](https://ui.shadcn.com/)
 *   **数学库:** [Math.js](https://mathjs.org/)
 
-## 快速开始
+### 快速开始
 
 1.  **克隆仓库:**
 
@@ -157,29 +159,12 @@ This project is licensed under the [MIT License](LICENSE).
 
 
 
-## 贡献
+### 贡献
 
 欢迎Fork/ Star
 
 如果您发现任何错误或有改进建议，请提交一个 issue 或 pull request。
 
-## 许可证
+### 许可证
 
-本项目根据 [MIT 许可证](LICENSE) 获得许可
-
-
-</div>
-
-<!-- JavaScript 控制语言切换 -->
-<script>
-  function showLanguage(lang) {
-    // 隐藏所有语言内容
-    document.getElementById('en-content').style.display = 'none';
-    document.getElementById('zh-content').style.display = 'none';
-    // 显示选中的语言内容
-    document.getElementById(lang + '-content').style.display = 'block';
-  }
-</script>
-
-
-
+本项目根据 [GPL3 许可证](LICENSE) 获得许可
