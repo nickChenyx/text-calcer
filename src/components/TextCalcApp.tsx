@@ -1,10 +1,29 @@
 import { evaluate, format, MathType } from 'mathjs';
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
+const LOCAL_STORAGE_KEY = 'text-calcer-data';
 
 export function TextCalcApp() {
-    const [lines, setLines] = useState<{ input: string; result: string }>({ input: '', result: '' });
+    const [lines, setLines] = useState<{ input: string; result: string }>(() => {
+        // 从 localStorage 加载完整数据
+        const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (savedData) {
+            try {
+                return JSON.parse(savedData);
+            } catch {
+                return { input: '', result: '' };
+            }
+        }
+        return { input: '', result: '' };
+    });
+
+    // 监听 lines 变化，存储完整数据
+    useEffect(() => {
+        if (lines.input !== '' || lines.result !== '') {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lines));
+        }
+    }, [lines]);
 
     const handleInputChange = (value: string) => {
         const inputLines = value.split('\n');
