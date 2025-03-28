@@ -1,10 +1,31 @@
 import { evaluate, format, MathType } from 'mathjs';
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { Button } from "@/components/ui/button";
+import domtoimage from 'dom-to-image-more';
 
+const LOCAL_STORAGE_KEY = 'text-calcer-data';
 
 export function TextCalcApp() {
-    const [lines, setLines] = useState<{ input: string; result: string }>({ input: '', result: '' });
+    const [lines, setLines] = useState<{ input: string; result: string }>(() => {
+        // 从 localStorage 加载完整数据
+        const savedData = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (savedData) {
+            try {
+                return JSON.parse(savedData);
+            } catch {
+                return { input: '', result: '' };
+            }
+        }
+        return { input: '', result: '' };
+    });
+
+    // 监听 lines 变化，存储完整数据
+    useEffect(() => {
+        if (lines.input !== '' || lines.result !== '') {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(lines));
+        }
+    }, [lines]);
 
     const handleInputChange = (value: string) => {
         const inputLines = value.split('\n');
@@ -34,22 +55,119 @@ export function TextCalcApp() {
         setLines({ input: value, result: resultLines.join('\n') });
     };
 
+    const handleScreenshot = async () => {
+        // 获取原始结果区域的宽度
+        const originalResult = document.querySelector('.container .grid > div:last-child');
+        if (!originalResult) return;
+        
+        // 创建临时容器
+        const tempContainer = document.createElement('div');
+        tempContainer.style.padding = '20px';
+        tempContainer.style.backgroundColor = '#ffffff';
+        tempContainer.style.borderRadius = '8px';
+        tempContainer.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        tempContainer.style.width = getComputedStyle(originalResult).width; // 保持与UI相同的宽度
+        
+        // 只克隆右侧结果TextArea
+        const resultClone = originalResult.cloneNode(true) as HTMLElement;
+        
+        if (resultClone) {
+            // 应用白底黑字样式
+            const textarea = resultClone.querySelector('textarea');
+            if (textarea) {
+                textarea.style.backgroundColor = '#ffffff';
+                textarea.style.color = '#000000';
+                textarea.style.fontFamily = 'Menlo, Monaco, Consolas, monospace';
+                textarea.style.fontSize = '14px';
+                textarea.style.lineHeight = '1.5';
+                textarea.style.border = '1px solid #e0e0e0';
+                textarea.style.boxShadow = 'none';
+                textarea.style.width = '100%';
+            }
+    
+            tempContainer.appendChild(resultClone);
+            document.body.appendChild(tempContainer);
+            
+            try {
+                const blob = await domtoimage.toBlob(tempContainer, {
+                    quality: 1,
+                    style: {
+                        transform: 'none'
+                    },
+                    bgcolor: '#ffffff'
+                });
+                
+                await navigator.clipboard.write([
+                    new ClipboardItem({
+                        'image/png': blob
+                    })
+                ]);
+                
+                // 显示成功提示并在1秒后消失
+                const successAlert = document.createElement('div');
+                successAlert.textContent = '结果截图已复制到剪贴板';
+                successAlert.style.position = 'fixed';
+                successAlert.style.top = '20px';
+                successAlert.style.right = '20px';
+                successAlert.style.padding = '10px 20px';
+                successAlert.style.backgroundColor = '#4CAF50';
+                successAlert.style.color = 'white';
+                successAlert.style.borderRadius = '4px';
+                successAlert.style.zIndex = '9999';
+                document.body.appendChild(successAlert);
+                
+                setTimeout(() => {
+                    document.body.removeChild(successAlert);
+                }, 1000);
+            } catch (error) {
+                console.error('截图失败:', error);
+                
+                // 显示失败提示并在1秒后消失
+                const errorAlert = document.createElement('div');
+                errorAlert.textContent = '截图失败，请重试';
+                errorAlert.style.position = 'fixed';
+                errorAlert.style.top = '20px';
+                errorAlert.style.right = '20px';
+                errorAlert.style.padding = '10px 20px';
+                errorAlert.style.backgroundColor = '#f44336';
+                errorAlert.style.color = 'white';
+                errorAlert.style.borderRadius = '4px';
+                errorAlert.style.zIndex = '9999';
+                document.body.appendChild(errorAlert);
+                
+                setTimeout(() => {
+                    document.body.removeChild(errorAlert);
+                }, 1000);
+            } finally {
+                document.body.removeChild(tempContainer);
+            }
+        }
+    };
+
     return (
-        <div className="container mx-auto p-4 grid grid-cols-2 gap-4 ">
-            <div className="flex flex-col space-y-2 ">
-                <Textarea
-                    value={lines.input}
-                    onChange={(e) => handleInputChange(e.target.value)}
-                    placeholder="输入公式, 例如: 20*10"
-                    className="w-full min-h-[calc(90vh-1rem)] md:text-2xl font-mono"
-                />
+        <div className="container mx-auto p-4">
+            <div className="flex justify-end mb-4">
+                <Button onClick={handleScreenshot} variant="outline">
+                    截图
+                </Button>
             </div>
-            <div className="flex flex-col space-y-2">
-                <Textarea
-                    value={lines.result}
-                    readOnly
-                    className="w-full min-h-[calc(90vh-1rem)]  font-bold  md:text-2xl"
-                />
+            <div className="grid grid-cols-2 gap-4">
+                {/* 两个TextArea保持不变 */}
+                <div className="flex flex-col space-y-2">
+                    <Textarea
+                        value={lines.input}
+                        onChange={(e) => handleInputChange(e.target.value)}
+                        placeholder="输入公式, 例如: 20*10"
+                        className="w-full min-h-[calc(90vh-1rem)] md:text-2xl font-mono"
+                    />
+                </div>
+                <div className="flex flex-col space-y-2">
+                    <Textarea
+                        value={lines.result}
+                        readOnly
+                        className="w-full min-h-[calc(90vh-1rem)] font-bold md:text-2xl"
+                    />
+                </div>
             </div>
         </div>
     );
